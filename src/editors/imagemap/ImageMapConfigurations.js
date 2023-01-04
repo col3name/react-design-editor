@@ -5,9 +5,6 @@ import classnames from 'classnames';
 
 import NodeProperties from './properties/NodeProperties';
 import MapProperties from './properties/MapProperties';
-import Animations from './animations/Animations';
-import Styles from './styles/Styles';
-import DataSources from './datasources/DataSources';
 import Icon from '../../components/icon/Icon';
 import CommonButton from '../../components/common/CommonButton';
 
@@ -46,12 +43,6 @@ class ImageMapConfigurations extends Component {
 			onChange,
 			selectedItem,
 			canvasRef,
-			animations,
-			styles,
-			dataSources,
-			onChangeAnimations,
-			onChangeStyles,
-			onChangeDataSources,
 		} = this.props;
 		const { collapse, activeKey } = this.state;
 		const { onChangeTab, onCollapse } = this.handlers;
@@ -80,15 +71,6 @@ class ImageMapConfigurations extends Component {
 					<Tabs.TabPane tab={<Icon name="cogs" />} key="node">
 						<NodeProperties onChange={onChange} selectedItem={selectedItem} canvasRef={canvasRef} />
 					</Tabs.TabPane>
-					<Tabs.TabPane tab={<Icon name="vine" prefix="fab" />} key="animations">
-						<Animations animations={animations} onChangeAnimations={onChangeAnimations} />
-					</Tabs.TabPane>
-					<Tabs.TabPane tab={<Icon name="star-half-alt" />} key="styles">
-						<Styles styles={styles} onChangeStyles={onChangeStyles} />
-					</Tabs.TabPane>
-					{/* <Tabs.TabPane tab={<Icon name="table" />} key="datasources">
-                        <DataSources ref={(c) => { this.dataSourcesRef = c; }} dataSources={dataSources} onChangeDataSources={onChangeDataSources} />
-                    </Tabs.TabPane> */}
 				</Tabs>
 			</div>
 		);
