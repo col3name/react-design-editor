@@ -133,32 +133,6 @@ class ImageMapHeaderToolbar extends Component {
 						tooltipTitle={i18n.t('action.crop-cancel')}
 					/>
 				</Flex.Item>
-				<Flex.Item className="rde-canvas-toolbar rde-canvas-toolbar-operation">
-					<CommonButton
-						className="rde-action-btn"
-						shape="circle"
-						disabled={isCropping}
-						onClick={() => canvasRef.handler?.saveImage()}
-						icon="image"
-						tooltipTitle={i18n.t('action.image-save')}
-					/>
-					<CommonButton
-						className="rde-action-btn"
-						shape="circle"
-						disabled={isCropping}
-						onClick={() => canvasRef.handler?.duplicate()}
-						icon="clone"
-						tooltipTitle={i18n.t('action.clone')}
-					/>
-					<CommonButton
-						className="rde-action-btn"
-						shape="circle"
-						disabled={isCropping}
-						onClick={() => canvasRef.handler?.remove()}
-						icon="trash"
-						tooltipTitle={i18n.t('action.delete')}
-					/>
-				</Flex.Item>
 				<Flex.Item className="rde-canvas-toolbar rde-canvas-toolbar-history">
 					<CommonButton
 						className="rde-action-btn"
