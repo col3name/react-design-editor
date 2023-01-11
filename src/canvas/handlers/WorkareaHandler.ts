@@ -151,6 +151,7 @@ class WorkareaHandler {
 							isElement: true,
 							selectable: false,
 						});
+                        img._element.crossOrigin = 'anonymous'
 					} else {
 						const image = new Image(workareaWidth, workareaHeight);
 						workarea.setElement(image);
@@ -187,7 +188,9 @@ class WorkareaHandler {
 					this.handler.zoomHandler.zoomToFit();
 					canvas.centerObject(workarea);
 					resolve(workarea);
-				});
+				}, {
+                    crossOrigin: 'anonymous',
+                })
 			});
 		};
 		const { workarea } = this.handler;
@@ -240,6 +243,7 @@ class WorkareaHandler {
 					let scaleX = 1;
 					let scaleY = 1;
 					if (img._element) {
+                        img._element.crossOrigin = 'anonymous'
 						scaleX = width / img.width;
 						scaleY = height / img.height;
 						img.set({
@@ -293,7 +297,10 @@ class WorkareaHandler {
 					this.handler.zoomHandler.zoomToPoint(new fabric.Point(center.left, center.top), zoom);
 					canvas.renderAll();
 					resolve(workarea);
-				});
+				},
+                {
+                    crossOrigin: 'anonymous',
+                });
 			});
 		};
 		if (!source) {

@@ -356,11 +356,6 @@ class ImageMapEditor extends Component {
 		},
 		onTooltip: (ref, target) => {
 			const value = Math.random() * 10 + 1;
-			const { animations, styles } = this.state;
-			// const { code } = target.trigger;
-			// const compile = SandBox.compile(code);
-			// const result = compile(value, animations, styles, target.userProperty);
-			// console.log(result);
 			return (
 				<div>
 					<div>
@@ -472,7 +467,7 @@ class ImageMapEditor extends Component {
 				</Menu>
 			);
 		},
-		onTransaction: transaction => {
+		onTransaction: () => {
 			this.forceUpdate();
 		},
 	};
@@ -482,10 +477,7 @@ class ImageMapEditor extends Component {
 			let data;
 			if (this.canvasRef) {
 				data = this.canvasRef.handler.exportJSON().filter(obj => {
-					if (!obj.id) {
-						return false;
-					}
-					return true;
+					return obj.id;
 				});
 			}
 			this.setState({
@@ -519,10 +511,7 @@ class ImageMapEditor extends Component {
 						if (objects) {
 							this.canvasRef.handler.clear(true);
 							const data = objects.filter(obj => {
-								if (!obj.id) {
-									return false;
-								}
-								return true;
+								return obj.id;
 							});
 							this.canvasRef.handler.importJSON(data);
 						}
@@ -552,10 +541,7 @@ class ImageMapEditor extends Component {
 		onDownload: () => {
 			this.showLoading(true);
 			const objects = this.canvasRef.handler.exportJSON().filter(obj => {
-				if (!obj.id) {
-					return false;
-				}
-				return true;
+				return obj.id;
 			});
 			const { animations, styles, dataSources } = this.state;
 			const exportDatas = {
@@ -598,9 +584,9 @@ class ImageMapEditor extends Component {
 				dataSources,
 			});
 		},
-		onSaveImage: () => {
-			this.canvasRef.handler.saveCanvasImage();
-		},
+        onSaveImage: () => {
+            this.canvasRef.handler.saveCanvasImage();
+        },
 	};
 
 	transformList = () => {
@@ -625,7 +611,6 @@ class ImageMapEditor extends Component {
 			selectedItem,
 			zoomRatio,
 			loading,
-			progress,
 			animations,
 			styles,
 			dataSources,

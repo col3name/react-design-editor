@@ -287,6 +287,7 @@ class Handler implements HandlerOptions {
 
 	private isRequsetAnimFrame = false;
 	private requestFrame: any;
+    private options: HandlerOptions;
 	/**
 	 * Copied object
 	 *
@@ -297,6 +298,7 @@ class Handler implements HandlerOptions {
 
 	constructor(options: HandlerOptions) {
 		this.initialize(options);
+        this.options = options;
 	}
 
 	/**
@@ -799,14 +801,11 @@ class Handler implements HandlerOptions {
 		return createdObj;
 	};
 
-	/**
-	 * Add group object
-	 *
-	 * @param {FabricGroup} obj
-	 * @param {boolean} [centered=true]
-	 * @param {boolean} [loaded=false]
-	 * @returns
-	 */
+    /**
+     * Add group object
+     * @param {FabricGroup} obj
+     * @returns
+     */
 	public addGroup = (obj: FabricGroup) => {
 		const { objects = [], ...other } = obj;
 		const _objects = objects.map(child => this.add(child, false, true, true)) as FabricObject[];
@@ -1799,7 +1798,8 @@ class Handler implements HandlerOptions {
 		this.zoomHandler.zoomOneToOne();
 
 		const { left, top, width, height } = this.workarea;
-		const dataUrl = this.canvas.toDataURL({
+        this.canvas = this.options.canvas;
+		const dataUrl = this.options.canvas.toDataURL({
 			...option,
 			left,
 			top,
@@ -1807,7 +1807,6 @@ class Handler implements HandlerOptions {
 			height,
 			enableRetinaScaling: true,
 		});
-
 		if (dataUrl) {
 			const anchorEl = document.createElement('a');
 			anchorEl.href = dataUrl;
