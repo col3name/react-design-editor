@@ -11,7 +11,7 @@ The module primarily uses the [Ant Design](https://github.com/ant-design/ant-des
 
 Try it out today - the project is being continually developed to support a variety of different functions.
 
-[View Demo](https://salgum1114.github.io/react-design-editor/)
+[View Demo](https://react-design-editor-f3f46.web.app/)
 
 # Feature List
 
